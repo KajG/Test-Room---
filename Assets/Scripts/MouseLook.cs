@@ -15,11 +15,9 @@ public class MouseLook : MonoBehaviour {
 	private float shootTimer;
 	public Transform look;
 	private Vector2 mousePos;
-
 	void Start () {
 		look = GetComponent<Transform> ();
 	}
-	
 	void Update () {
 		Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
 		Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -31,7 +29,6 @@ public class MouseLook : MonoBehaviour {
 			Shoot (bulletAmount);
 		}
 	}
-
 	void Shoot(int amount){
 		if (shootTimer <= 0) {
 			shootTimer = shootTimerLimit;

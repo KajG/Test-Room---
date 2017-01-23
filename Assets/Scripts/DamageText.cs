@@ -6,12 +6,10 @@ public class DamageText : MonoBehaviour {
 
 	private TextMesh text;
 	private float textAlpha;
-
+	[SerializeField] private float speed;
 	void Start(){
 		text = GetComponent<TextMesh> ();
 	}
-
-	[SerializeField] private float speed;
 	private Vector3 movement;
 	void Update () {
 		movement = new Vector3 (0, speed, 0);

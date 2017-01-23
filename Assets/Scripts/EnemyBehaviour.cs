@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BulletCollision : MonoBehaviour {
+public class EnemyBehaviour : MonoBehaviour {
 	[SerializeField] private int _health;
 	[SerializeField] private BulletMovement bullet;
 	public TextMesh damageText;
@@ -15,5 +15,10 @@ public class BulletCollision : MonoBehaviour {
 			Instantiate (damageText, new Vector2(Random.Range(transform.position.x, transform.position.x - 1f), Random.Range(transform.position.y + 1, transform.position.y + 2)), Quaternion.identity);
 			damageText.text = ("-" + bullet.getDamage);
 		} 
+	}
+	void Update(){
+		if (_health <= 0) {
+			Destroy (gameObject);
+		}
 	}
 }

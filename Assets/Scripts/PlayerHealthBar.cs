@@ -9,15 +9,16 @@ public class PlayerHealthBar : MonoBehaviour {
 	public PlayerMovement Playermovement;
 	private BulletMovement bullet;
 	public TextMesh damageText;
-	private int _health;
-
+	[SerializeField]private int _health;
+	public int getHealth{get{return _health;}set{_health = value;}}
 	void Start () {
 		Playermovement = Playermovement.GetComponent<PlayerMovement> ();
-		_health = Playermovement.getPlayerHealth;
+		healthbar.value = _health;
 	}
-	
 	void Update () {
-		
+		if (_health <= 0) {
+			_health = 0;
+		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "bullet") {
