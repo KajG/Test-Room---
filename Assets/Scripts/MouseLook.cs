@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour {
 
-	public GameObject bullet;
-	private float angle;
-	public float getAngle{get{return angle;}set {angle = value;}}
 	[SerializeField]private float destroyTimer;
 	[SerializeField]private List<Transform> muzzlePos = new List<Transform>();
 	[SerializeField]private float shootTimerLimit;
-	[SerializeField]private int upgrade;
+	[SerializeField]private int bulletAmount;
+	public GameObject bullet;
+	private float angle;
+	public float getAngle{get{return angle;}set {angle = value;}}
+	public int getBulletAmount{get{return bulletAmount;}set {bulletAmount = value;}}
 	private float shootTimer;
 	public Transform look;
 	private Vector2 mousePos;
@@ -27,7 +28,7 @@ public class MouseLook : MonoBehaviour {
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		shootTimer -= Time.fixedDeltaTime;
 		if (Input.GetMouseButton (0)) {
-			Shoot (upgrade);
+			Shoot (bulletAmount);
 		}
 	}
 
