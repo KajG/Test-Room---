@@ -8,8 +8,9 @@ public class MouseLook : MonoBehaviour {
 	private float angle;
 	public float getAngle{get{return angle;}set {angle = value;}}
 	[SerializeField]private float destroyTimer;
-	[SerializeField]private Transform muzzlePos;
+	[SerializeField]private List<Transform> muzzlePos = new List<Transform>();
 	[SerializeField]private float shootTimerLimit;
+	[SerializeField]private int upgrade;
 	private float shootTimer;
 	public Transform look;
 	private Vector2 mousePos;
@@ -26,15 +27,17 @@ public class MouseLook : MonoBehaviour {
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		shootTimer -= Time.fixedDeltaTime;
 		if (Input.GetMouseButton (0)) {
-			Shoot ();
+			Shoot (upgrade);
 		}
 	}
 
-	void Shoot(){
+	void Shoot(int amount){
 		if (shootTimer <= 0) {
-			Destroy (Instantiate (bullet, muzzlePos.position, Quaternion.AngleAxis (angle, Vector3.forward)), destroyTimer);
-			bullet.gameObject.tag = "bullet";
 			shootTimer = shootTimerLimit;
+			for (int i = 0; i < amount; i++) {
+				Destroy (Instantiate (bullet, muzzlePos [i].position, Quaternion.AngleAxis (angle, Vector3.forward)), destroyTimer);
+			}
+			bullet.gameObject.tag = "bullet";
 		}
 	}
 }

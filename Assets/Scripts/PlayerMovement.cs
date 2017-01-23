@@ -9,10 +9,6 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector2 position;
 	private Vector2 movement;
 
-	void Start () {
-		
-	}
-	
 	void Update () {
 		position = this.transform.position;
 		if (input.getUpKey) {
