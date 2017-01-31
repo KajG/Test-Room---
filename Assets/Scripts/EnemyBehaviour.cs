@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnemyBehaviour : MonoBehaviour {
 	[SerializeField] private int _health;
 	[SerializeField] private BulletMovement bullet;
+	public int getHealth{get{return _health;}set{_health = value;}}
 	public TextMesh damageText;
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == ("bullet")) {

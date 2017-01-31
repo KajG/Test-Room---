@@ -6,16 +6,22 @@ public class EnemyAI : MonoBehaviour {
 
 	private Vector3 movement;
 	private float rotationTimer = 1; 
-	[SerializeField]private float timerSet;
 	private int randomRotation;
-	[SerializeField]private float speed;
+	[SerializeField]private float _timerSet;
+	[SerializeField]private float _speed;
+	[SerializeField]private float _degrees;
+	private float timer = 1;
+	private float x;
+	private float y;
 	void Update () {
+		movement = new Vector3 (0,0,x);
 		rotationTimer -= Time.fixedDeltaTime;
-		this.transform.position += transform.up * Time.fixedDeltaTime * speed;
+		this.transform.position += transform.up * Time.fixedDeltaTime * _speed;
 		if (rotationTimer <= 0) {
-			movement = new Vector3 (0,0,Random.Range (0, 360));
+			x = Random.Range (this.transform.eulerAngles.z - _degrees, this.transform.eulerAngles.z + _degrees);
+			y = Mathf.Lerp (this.transform.eulerAngles.z, x, _timerSet);
 			transform.eulerAngles = movement;
-			rotationTimer = 1;
+			rotationTimer = _timerSet;
 		}
 	}
 }

@@ -7,7 +7,7 @@ public class MouseLook : MonoBehaviour {
 	[SerializeField]private float destroyTimer;
 	[SerializeField]private List<Transform> muzzlePos = new List<Transform>();
 	[SerializeField]private float shootTimerLimit;
-	[SerializeField]private int bulletAmount;
+	[SerializeField]private int bulletAmount = 1;
 	public GameObject bullet;
 	private float angle;
 	public float getAngle{get{return angle;}set {angle = value;}}
@@ -25,17 +25,9 @@ public class MouseLook : MonoBehaviour {
 		angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 		shootTimer -= Time.fixedDeltaTime;
-		if (Input.GetMouseButton (0)) {
-			Shoot (bulletAmount);
-		}
-	}
-	void Shoot(int amount){
-		if (shootTimer <= 0) {
-			shootTimer = shootTimerLimit;
-			for (int i = 0; i < amount; i++) {
-				Destroy (Instantiate (bullet, muzzlePos [i].position, Quaternion.AngleAxis (angle, Vector3.forward)), destroyTimer);
-			}
-			bullet.gameObject.tag = "bullet";
-		}
+		//if (Input.GetMouseButton (0)) {
+		//	Shoot (bulletAmount);
+		//}
 	}
 }
+//Destroy (Instantiate (bullet, muzzlePos [i].position, Quaternion.AngleAxis (angle, Vector3.forward)), destroyTimer);
