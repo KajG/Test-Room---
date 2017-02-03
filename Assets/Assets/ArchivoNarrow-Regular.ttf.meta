@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 04a394a4f1a12c147a7b7fed82df5193
-timeCreated: 1486040823
+guid: 19dea13d82c2ca24ba33e9a1aa8093ae
+timeCreated: 1486148108
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Perfect Dark (BRK)
+  fontName: Archivo Narrow
   fontNames:
-  - Perfect Dark (BRK)
+  - Archivo Narrow
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
